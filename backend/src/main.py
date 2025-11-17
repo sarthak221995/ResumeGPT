@@ -28,7 +28,7 @@ app.add_middleware(
 )
 
 UPLOAD_DIR = Path("uploads")
-TEMPLATES_UPLOAD_DIR = Path("templates")
+TEMPLATES_UPLOAD_DIR = Path("latex_resume_templates")
 UPLOAD_DIR.mkdir(exist_ok=True)
 TEMPLATES_UPLOAD_DIR.mkdir(exist_ok=True)
 
@@ -152,3 +152,125 @@ async def process_resume(file: UploadFile = File(...),template_id: int = 1):
         return {"success": False, "error": he.detail}
     except Exception as e:
         return {"success": False, "error": f"LaTeX conversion error: {str(e)}"}
+    
+@app.post("/process-typst")
+async def process_resume_typst(
+    file: UploadFile = File(...),
+    template_id: int = 1
+):
+    """Process uploaded resume and convert to Typst."""
+
+    from .agents.typst_converter import TypstConverter
+
+    # Step 1: Extract content from the uploaded file
+    content = await upload_file(file)
+    content = content.get("extraction", {})
+    if not content.get("success", False):
+        return {
+            "success": False,
+            "error": content.get("error", "Unknown upload error")
+        }
+
+    extracted_json = content.get("extracted_data", {})
+
+    try:
+        # Step 2: Read the Typst template file
+        typst_file_path = TEMPLATES_UPLOAD_DIR / f"{template_id}.typ"
+        async with aiofiles.open(typst_file_path, mode="r") as f:
+            typst_template = await f.read()
+
+        # Step 3: Run Typst conversion
+        converter = TypstConverter()
+        typst_result = await converter.convert_to_typst(
+            typst_template=typst_template,
+            json_data=extracted_json
+        )
+
+        if not typst_result.get("success", False):
+            return {
+                "success": False,
+                "error": typst_result.get("error", "Unknown Typst conversion error"),
+            }
+
+        # Step 4: Save .typ output file
+        typst_filename = f"{Path(file.filename).stem}.typ"
+        typst_output_path = UPLOAD_DIR / typst_filename
+
+        async with aiofiles.open(typst_output_path, "w") as typst_file:
+            await typst_file.write(typst_result.get("typst", ""))
+
+        # Step 5: Final response
+        return {
+            "success": True,
+            "original_filename": file.filename,
+            "extracted_data": extracted_json,
+            "typst_filename": typst_filename,
+            "typst_path": str(typst_output_path),
+            "typst_preview": typst_result.get("typst", "")[:500]  # First 500 chars
+        }
+
+    except HTTPException as he:
+        return {"success": False, "error": he.detail}
+
+    except Exception as e:
+        return {
+            "success": False,
+            "error": f"Typst conversion error: {str(e)}"
+        }
+
+
+@app.post("/compile-typst")
+async def compile_typst(
+    file: UploadFile = File(None),
+    content: str = None
+):
+    """
+    Compile Typst content into a PDF.
+    Either upload a `.typ` file OR send raw Typst text in `content`.
+    """
+    from .services.typst_pdf_compiler import TypstPDFCompiler
+    import uuid
+    if not file and not content:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide either a .typ file or `content` text."
+        )
+
+    # STEP 1: Load Typst source code
+    if file:
+        if not file.filename.endswith(".typ"):
+            raise HTTPException(status_code=400, detail="Uploaded file must be a .typ file")
+
+        typst_text = (await file.read()).decode("utf-8")
+        original_name = Path(file.filename).stem
+
+    else:
+        typst_text = content
+        original_name = f"document-{uuid.uuid4().hex[:8]}"
+
+    # STEP 2: Compile Typst → PDF
+    try:
+        compiler = TypstPDFCompiler()
+        pdf_path_temp = await compiler.compile_typst(typst_text)
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Typst compilation error: {str(e)}"
+        )
+
+    # STEP 3: Persist PDF in UPLOAD_DIR
+    final_pdf_name = f"{original_name}.pdf"
+    final_pdf_path = UPLOAD_DIR / final_pdf_name
+
+    async with aiofiles.open(final_pdf_path, 'wb') as f:
+        async with aiofiles.open(pdf_path_temp, 'rb') as temp_pdf:
+            await f.write(await temp_pdf.read())
+
+    # STEP 4: Return metadata
+    return {
+        "success": True,
+        "pdf_filename": final_pdf_name,
+        "pdf_path": str(final_pdf_path),
+        "message": "PDF compiled and saved successfully"
+    }

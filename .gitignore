@@ -47,3 +47,8 @@ buildNumber.properties
 src/config.py
 backend/src/config.py
 backend/src/config.py
+
+#Uploads
+backend/uploads/
+
+
