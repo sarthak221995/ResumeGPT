@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Resume Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb; /* Modern Blue */
+            --dark: #1e293b;
+            --text: #475569;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #fff;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            font-size: 10.5pt;
+            line-height: 1.5;
+        }
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            padding: 0.6in;
+        }
+
+        /* HEADER */
+        header { margin-bottom: 30px; }
+        h1 {
+            font-size: 32pt;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+        .role-title {
+            font-size: 14pt;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        .contact-row {
+            font-size: 10pt;
+            display: flex;
+            gap: 20px;
+            color: var(--dark);
+        }
+        a { color: var(--dark); text-decoration: none; border-bottom: 1px dotted var(--dark); }
+
+        /* SECTIONS */
+        .section-title {
+            font-size: 11pt;
+            color: var(--dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-bottom: 2px solid #f1f5f9;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            padding-bottom: 8px;
+        }
+
+        /* ENTRIES */
+        .entry { margin-bottom: 20px; }
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        .entry-company {
+            font-size: 12pt;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .entry-date {
+            font-size: 10pt;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+        .entry-role {
+            font-size: 11pt;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        /* LISTS */
+        ul { margin-left: 18px; }
+        li { margin-bottom: 6px; }
+
+        /* SKILLS GRID */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .skill-label { font-weight: 600; color: var(--dark); }
+        .skill-val { color: var(--text); }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Alex Chen</h1>
+            <div class="role-title">Senior Product Designer</div>
+            <div class="contact-row">
+                <a href="#">alex.chen@design.com</a>
+                <a href="#">(415) 555-9876</a>
+                <a href="#">portfolio.alexchen.com</a>
+                <a href="#">linkedin.com/in/alexchen</a>
+            </div>
+        </header>
+
+        <div class="section-title">Experience</div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-company">Airbnb</span>
+                <span class="entry-date">2022 — Present</span>
+            </div>
+            <div class="entry-role">Staff Product Designer</div>
+            <ul>
+                <li>Leading the design vision for the Host Experience platform, improving host retention by 12% via streamlined onboarding flows.</li>
+                <li>Spearheaded the "Categories" design system refresh, ensuring accessibility compliance (WCAG 2.1) across web and mobile.</li>
+                <li>Collaborate closely with PMs and Engineers to prototype high-fidelity interactions in Figma and Framer.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-company">Spotify</span>
+                <span class="entry-date">2019 — 2022</span>
+            </div>
+            <div class="entry-role">Senior UI/UX Designer</div>
+            <ul>
+                <li>Designed the "Wrapped" campaign experience for 2020 and 2021, driving record-breaking social sharing engagement.</li>
+                <li>Conducted user research and usability testing to redesign the mobile library interface, resulting in a 20% increase in daily active users.</li>
+                <li>Maintained and contributed to the Encore design system, creating new components used by 50+ squads.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-company">Dropbox</span>
+                <span class="entry-date">2017 — 2019</span>
+            </div>
+            <div class="entry-role">Product Designer</div>
+            <ul>
+                <li>Revamped the file sharing flow for Dropbox Business, reducing friction and support tickets by 30%.</li>
+                <li>Created micro-interactions and animations that enhanced the perceived performance of the web application.</li>
+            </ul>
+        </div>
+
+        <div class="section-title">Skills</div>
+        
+        <div class="skills-grid">
+            <div class="skill-label">Design</div>
+            <div class="skill-val">UI/UX, Interaction Design, Wireframing, Prototyping, Design Systems, User Research</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-label">Tools</div>
+            <div class="skill-val">Figma, Adobe Creative Suite, Framer, Principle, Sketch, Notion, Jira</div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-label">Code</div>
+            <div class="skill-val">HTML/CSS, Basic React, Tailwind CSS, Storybook</div>
+        </div>
+
+        <div class="section-title">Education</div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <span class="entry-company">Rhode Island School of Design (RISD)</span>
+                <span class="entry-date">2013 — 2017</span>
+            </div>
+            <div class="entry-role">BFA in Graphic Design</div>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - John Doe</title>
+    <style>
+        /* --------------------------------------------------
+           BASE SETTINGS & FONTS
+           -------------------------------------------------- */
+        :root {
+            /* Approximate gray 0.75 from LaTeX */
+            --header-gray: #bfbfbf; 
+            --font-main: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #525659; /* Dark gray background for viewer context */
+            margin: 0;
+            padding: 20px 0;
+            font-family: var(--font-main);
+            font-size: 10pt; /* Matches LaTeX 10pt */
+            line-height: 1.3;
+            color: #000;
+        }
+
+        /* --------------------------------------------------
+           PAGE LAYOUT (A4 & Geometry)
+           -------------------------------------------------- */
+        .page {
+            background-color: white;
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            /* Geometry: top=0.75in, bottom=0.75in, left=0.55in, right=0.85in */
+            padding-top: 0.75in;
+            padding-bottom: 0.75in;
+            padding-left: 0.55in;
+            padding-right: 0.85in;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* --------------------------------------------------
+           HEADER SECTION
+           -------------------------------------------------- */
+        .header {
+            margin-bottom: 15px;
+            margin-left: 0.5cm; /* Matches \hspace{0.5cm} */
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 2px;
+        }
+
+        .contact-info {
+            /* Matches \indent behavior */
+            margin-left: 2em; 
+        }
+        
+        .contact-info div {
+            margin-bottom: 1px;
+        }
+
+        /* --------------------------------------------------
+           SECTION HEADINGS (\resheading)
+           -------------------------------------------------- */
+        .resheading {
+            background-color: var(--header-gray);
+            padding: 2px 6px;
+            font-weight: bold;
+            font-size: 10pt;
+            border: 1px solid var(--header-gray); /* Ensures color fills box */
+            width: 97.5%; /* Matches minipage{0.975\textwidth} */
+            margin-top: 12px;
+            margin-bottom: 10px; /* approximate \lsep adjust */
+            /* Small caps often used in resume headers, though not explicitly requested, 
+               LaTeX bold often looks 'heavier'. */
+        }
+
+        /* --------------------------------------------------
+           TABLES (Education)
+           -------------------------------------------------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-left: 2em; /* Indent table */
+            margin-bottom: 10px;
+            font-size: 10pt;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 2px 0.15in 2px 0; /* Matches \hskip 0.15in */
+            vertical-align: top;
+        }
+
+        thead th {
+            border-bottom: 1px solid black;
+            border-top: 1px solid black;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .table-footer-line {
+            border-top: 1px solid black;
+        }
+
+        /* --------------------------------------------------
+           LISTS & ITEMS
+           -------------------------------------------------- */
+        ul {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 1.2em;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        /* Tighter nested lists (\isep = -2pt) */
+        ul ul {
+            margin-top: 0px;
+            margin-bottom: 6px;
+        }
+        
+        ul ul li {
+            margin-bottom: 0px;
+        }
+
+        /* Custom bullet for 2nd level matches \labelitemii{$\circ$} */
+        ul ul {
+            list-style-type: circle; 
+        }
+
+        .project-title {
+            font-weight: bold;
+        }
+
+        .project-guide {
+            font-style: italic;
+            display: block;
+            margin-top: -2px; /* visual adjustment for line height */
+            margin-bottom: 2px;
+        }
+
+        /* --------------------------------------------------
+           PRINT MEDIA QUERIES
+           -------------------------------------------------- */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 100%;
+                /* Print margins handled by CSS padding, so set browser print margins to 0 */
+            }
+            .resheading {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="header">
+        <div class="name">John Doe</div>
+        <div class="contact-info">
+            <div>Great county,</div>
+            <div>Main Road,</div>
+            <div>Bombay (M.P., INDIA) - 476514</div>
+            <div>Email-id : <strong>someone@email.com</strong></div>
+            <div>Mobile No.: <strong>1234567890</strong></div>
+            <div>Alt Mob No.: <strong>1234567890</strong></div>
+        </div>
+    </div>
+
+    <div class="resheading">ACADEMIC DETAILS</div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Examination</th>
+                <th>University</th>
+                <th>Institute</th>
+                <th>Year</th>
+                <th>CPI/%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="5">Post Graduate Specialization:&nbsp;&nbsp; <i>Computer Science and Engineering</i></td>
+            </tr>
+            <tr>
+                <td>Post Graduation</td>
+                <td>IIT Bombay</td>
+                <td>IIT Bombay</td>
+                <td>2014</td>
+                <td>8.0</td>
+            </tr>
+            <tr>
+                <td colspan="5">UnderGraduate Specialization: <i>Computer Engineering</i></td>
+            </tr>
+            <tr>
+                <td>Graduation</td>
+                <td>DAVV, Indore</td>
+                <td>IET-DAVV, Indore</td>
+                <td>2012</td>
+                <td>76.5</td>
+            </tr>
+            <tr>
+                <td colspan="5" class="table-footer-line"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="resheading">FIELDS OF INTEREST</div>
+    <ul>
+        <li>Wireless Network and Network Security, Another one, a third one</li>
+    </ul>
+
+    <div class="resheading">TECHNICAL SKILLS</div>
+    <ul>
+        <li>
+            <strong>Languages</strong> (C, C++, Java), <strong>Database</strong> (MySQL) <strong>Script</strong> (Python, Shell, Perl, R), <strong>Tools</strong> (Eclipse, LaTeX, Gnuplot, Rstudio).
+        </li>
+    </ul>
+
+    <div class="resheading">MAJOR PROJECTS AND SEMINAR</div>
+    <ul>
+        <li>
+            <span class="project-title">Media Access Control Controling (Research Project)</span>
+            <span class="project-guide">(Guide:Prof. Hubert F. , May'13 - till date)</span>
+            <ul>
+                <li>Objective :Performance analysis of HTTP web browsing traffic. .</li>
+                <li>Performance analysis will help in comparing different MAC protocols based on different network scenarios.</li>
+                <li>Studied various papers related to different MAC protocols and now working on improving simulations.</li>
+            </ul>
+        </li>
+        <li style="margin-top: 8px;">
+            <span class="project-title">Second Item. (M. Tech. Seminar)</span>
+            <span class="project-guide">(Guide: Prof. John Doe , Jan'14 - Aug'14)</span>
+            <ul>
+                <li>First subitem.</li>
+                <li>Second subitem.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="resheading">STRENGTHS</div>
+    <ul>
+        <li>Positive Attitude, Social Interaction, Hardworking.</li>
+    </ul>
+
+    <div class="resheading">INTEREST AND HOBBIES</div>
+    <ul>
+        <li>Solving Puzzles.</li>
+        <li>Playing Chess.</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

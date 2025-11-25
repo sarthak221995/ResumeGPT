@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthak Dargan - The Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #004f9f; /* Deep Corporate Blue */
+            --text-color: #333333;
+            --gray-text: #666666;
+            --light-gray: #e5e5e5;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #f2f2f2;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 10pt;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+        .page {
+            background: white;
+            width: 8.5in;
+            min-height: 11in;
+            margin: 40px auto;
+            padding: 0.6in;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* HEADER */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 15px;
+        }
+        .header-left h1 {
+            font-size: 28pt;
+            font-weight: 700;
+            color: #222;
+            line-height: 1;
+        }
+        .header-left h2 {
+            font-size: 11pt;
+            font-weight: 400;
+            color: var(--accent-color);
+            margin-top: 5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .header-right {
+            text-align: right;
+            font-size: 9pt;
+            color: var(--gray-text);
+        }
+        .header-right a { color: var(--gray-text); text-decoration: none; }
+        .header-right div { margin-bottom: 2px; }
+
+        /* SECTIONS */
+        .section-header {
+            color: var(--accent-color);
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--light-gray);
+            margin-top: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* ENTRIES */
+        .entry { margin-bottom: 12px; }
+        .entry-top {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 11pt;
+            color: #222;
+        }
+        .entry-mid {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9.5pt;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .date { color: var(--gray-text); font-style: italic; font-weight: 400; }
+        
+        /* LISTS */
+        ul { list-style: none; margin-left: 0; }
+        li {
+            position: relative;
+            padding-left: 15px;
+            font-size: 10pt;
+            margin-bottom: 3px;
+            color: #444;
+        }
+        li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* SKILLS TAGS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .skill-category { font-weight: 700; font-size: 10pt; color: #222; display: block; margin-bottom: 2px;}
+        .skill-items { font-size: 9.5pt; color: #555; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; padding: 0.5in; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    
+    <div class="header-container">
+        <div class="header-left">
+            <h1>Sarthak Dargan</h1>
+            <h2>Senior Machine Learning Engineer</h2>
+        </div>
+        <div class="header-right">
+            <div>Bengaluru, India</div>
+            <div>+91 9810437497</div>
+            <div><a href="#">sarthak221995@gmail.com</a></div>
+            <div><a href="#">github.com/sarthak221995</a></div>
+        </div>
+    </div>
+
+    <div class="section-header">Experience</div>
+
+    <div class="entry">
+        <div class="entry-top">
+            <span>PayPal</span>
+            <span>Bengaluru</span>
+        </div>
+        <div class="entry-mid">
+            <span>Senior Machine Learning Engineer</span>
+            <span class="date">Apr 2025 – Present</span>
+        </div>
+        <ul>
+            <li>Built enterprise knowledge retrieval system using RAG over Confluence + Slack with hybrid search (BM25 + semantic).</li>
+            <li>Designed custom bidirectional chunking with OCR, parallel pipelines, source-attribution, and GPT-4 models.</li>
+            <li>Developed agentic multimodal dispute-resolution workflow using CrewAI with async tool orchestration.</li>
+            <li>Integrated GPT-4.1/4o for adaptive dialogue flows, tool use, and document understanding.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="entry-top">
+            <span>Amazon</span>
+            <span>Bengaluru</span>
+        </div>
+        <div class="entry-mid">
+            <span>Research Analyst II (Data Scientist II)</span>
+            <span class="date">May 2021 – Apr 2025</span>
+        </div>
+        <ul>
+            <li>Led LLM-based summarization engine using Claude & Mistral-7B to synthesize multi-source insights.</li>
+            <li>Conducted causal impact analysis using Difference-in-Differences with PSM & KNN matching; measured 1.35% uplift.</li>
+            <li>Built ANN-powered hybrid recommendation model for vendor next-category prediction via AWS Step Functions.</li>
+        </ul>
+    </div>
+
+    <div class="section-header">Education</div>
+    <div class="entry">
+        <div class="entry-top">
+            <span>BITS Pilani</span>
+            <span>WILP</span>
+        </div>
+        <div class="entry-mid">
+            <span>M.Tech, Data Science & Engineering</span>
+            <span class="date">2020 – 2022</span>
+        </div>
+    </div>
+    <div class="entry">
+        <div class="entry-top">
+            <span>Punjabi University</span>
+            <span>Patiala</span>
+        </div>
+        <div class="entry-mid">
+            <span>B.Tech, Computer Science & Engineering</span>
+            <span class="date">2013 – 2017</span>
+        </div>
+    </div>
+
+    <div class="section-header">Skills</div>
+    <div class="skills-grid">
+        <div>
+            <span class="skill-category">Core Expertise</span>
+            <div class="skill-items">GenAI, Agentic AI, RAG, Fine-tuning (SFT, GRPO), NLP, Transformers</div>
+        </div>
+        <div>
+            <span class="skill-category">Programming & Cloud</span>
+            <div class="skill-items">Python, AWS (Lambda, Step Functions), PyTorch, SQL, Docker, Milvus</div>
+        </div>
+        <div style="margin-top: 10px;">
+            <span class="skill-category">Tools</span>
+            <div class="skill-items">Hugging Face, LangChain, CrewAI, Redis, DeepSpeed</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

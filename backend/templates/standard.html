@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthak Dargan - The Standard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 10.5pt; /* Slightly smaller for density */
+            color: #222;
+            line-height: 1.4;
+        }
+        .page {
+            background: white;
+            width: 8.5in;
+            min-height: 11in;
+            margin: 40px auto;
+            padding: 0.5in;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* HEADER */
+        header { text-align: center; margin-bottom: 15px; }
+        h1.name {
+            font-size: 22pt;
+            font-weight: 500; /* Not too bold */
+            text-transform: capitalize;
+            margin-bottom: 4px;
+        }
+        .contact-info {
+            font-size: 9.5pt;
+        }
+        .contact-info a { color: #000; text-decoration: none; }
+        .contact-info span { margin: 0 3px; }
+
+        /* SECTIONS */
+        h2.section-title {
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ENTRIES */
+        .entry { margin-bottom: 8px; }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .entry-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #000;
+        }
+        .entry-location {
+            font-size: 10.5pt;
+            font-weight: 400;
+            font-style: italic;
+        }
+        .entry-sub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+        .entry-role { font-style: italic; font-weight: 400; }
+        .entry-date { font-style: italic; }
+
+        /* LISTS */
+        ul {
+            list-style-type: disc;
+            margin-left: 18px;
+            margin-top: 2px;
+        }
+        li {
+            font-size: 10pt;
+            margin-bottom: 1px;
+        }
+
+        /* SKILLS ROW - Specialized for Jake's */
+        .skills-container { display: flex; flex-direction: column; gap: 2px; }
+        .skill-row { display: flex; }
+        .skill-label { font-weight: 700; width: 140px; flex-shrink: 0; }
+        .skill-list { flex: 1; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; padding: 0.5in; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <h1 class="name">Sarthak Dargan</h1>
+        <div class="contact-info">
+            +91 9810437497 <span>|</span>
+            <a href="mailto:sarthak221995@gmail.com">sarthak221995@gmail.com</a> <span>|</span>
+            <a href="https://linkedin.com">LinkedIn</a> <span>|</span>
+            <a href="https://github.com">GitHub</a>
+        </div>
+    </header>
+
+    <section>
+        <h2 class="section-title">Education</h2>
+        
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">BITS Pilani</span>
+                <span class="entry-location">WILP</span>
+            </div>
+            <div class="entry-sub-header">
+                <span class="entry-role">M.Tech, Data Science & Engineering</span>
+                <span class="entry-date">2020 – 2022</span>
+            </div>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Punjabi University</span>
+                <span class="entry-location">Patiala</span>
+            </div>
+            <div class="entry-sub-header">
+                <span class="entry-role">B.Tech, Computer Science & Engineering</span>
+                <span class="entry-date">2013 – 2017</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Experience</h2>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">PayPal</span>
+                <span class="entry-location">Bengaluru</span>
+            </div>
+            <div class="entry-sub-header">
+                <span class="entry-role">Senior Machine Learning Engineer</span>
+                <span class="entry-date">Apr 2025 – Present</span>
+            </div>
+            <ul>
+                <li>Built enterprise knowledge retrieval system using RAG over Confluence + Slack with hybrid search (BM25 + semantic) using Milvus & MS-MARCO reranking.</li>
+                <li>Designed custom bidirectional chunking with OCR, parallel pipelines, source-attribution, and GPT-4 models.</li>
+                <li>Developed agentic multimodal dispute-resolution workflow using CrewAI with async tool orchestration and Redis-backed state tracking.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">Amazon</span>
+                <span class="entry-location">Bengaluru</span>
+            </div>
+            <div class="entry-sub-header">
+                <span class="entry-role">Research Analyst II (Data Scientist II)</span>
+                <span class="entry-date">May 2021 – Apr 2025</span>
+            </div>
+            <ul>
+                <li>Led LLM-based summarization engine using Claude & Mistral-7B to synthesize multi-source insights.</li>
+                <li>Conducted causal impact analysis using Difference-in-Differences with PSM & KNN matching; measured 1.35% uplift in GMS.</li>
+                <li>Built ANN-powered hybrid recommendation model for vendor next-category prediction; deployed via AWS Step Functions.</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">KPMG</span>
+                <span class="entry-location">Gurugram</span>
+            </div>
+            <div class="entry-sub-header">
+                <span class="entry-role">Associate Data Science Consultant</span>
+                <span class="entry-date">Aug 2020 – May 2021</span>
+            </div>
+            <ul>
+                <li>Built hierarchical clustering-based investment fund recommendation engine for targeted advisor outreach.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Projects</h2>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">PayPal 2025 Hackathon Finalist</span>
+                <span class="entry-date">2025</span>
+            </div>
+            <ul>
+                <li>Fine-tuned Qwen-32B with SFT + multi-step GRPO (DeepSpeed ZeRO-3). Achieved 2.5× task completion improvement.</li>
+            </ul>
+        </div>
+        <div class="entry">
+            <div class="entry-header">
+                <span class="entry-title">GitHub Readme Generator</span>
+                <span class="entry-date">Open Source</span>
+            </div>
+            <ul>
+                <li>CrewAI-based orchestrator using Gemini LLM, Flask API, async pipelines, Dockerized deployment.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-row">
+                <span class="skill-label">Languages</span>
+                <span class="skill-list">Python, SQL, Bash</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Frameworks</span>
+                <span class="skill-list">PyTorch, TensorFlow, LangChain, CrewAI, Flask, DeepSpeed</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Cloud/Tools</span>
+                <span class="skill-list">AWS (Lambda, Step Functions), Docker, Milvus, Redis, Git</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Concepts</span>
+                <span class="skill-list">GenAI, RAG, Agentic AI, NLP, Deep Learning, Causal Inference</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarthak Dargan - The Classic</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #dcdcdc;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            color: #000;
+            line-height: 1.35;
+        }
+        .page {
+            background: white;
+            width: 8.5in;
+            min-height: 11in;
+            margin: 40px auto;
+            padding: 0.6in 0.7in;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* HEADER */
+        header { text-align: center; border-bottom: 1px solid #000; padding-bottom: 15px; margin-bottom: 15px; }
+        h1.name {
+            font-size: 20pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .contact-info { font-size: 10.5pt; }
+        .contact-info a { color: #000; text-decoration: none; }
+        
+        /* SECTIONS */
+        h2.section-title {
+            font-size: 12pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+            margin-top: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* ENTRIES */
+        .entry { margin-bottom: 10px; }
+        .entry-line-1 {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11pt;
+        }
+        .company { font-weight: bold; }
+        .location { font-style: normal; }
+
+        .entry-line-2 {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11pt;
+            margin-bottom: 3px;
+        }
+        .role { font-style: italic; }
+        .date { font-style: italic; }
+
+        /* LISTS */
+        ul { margin-left: 20px; list-style-type: disc; }
+        li { margin-bottom: 2px; }
+
+        /* SKILLS */
+        .skills-section p { margin-bottom: 4px; }
+        .skill-bold { font-weight: bold; }
+
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; margin: 0; padding: 0.6in 0.7in; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <h1 class="name">Sarthak Dargan</h1>
+        <div class="contact-info">
+            Bengaluru, India • +91 9810437497 • <a href="mailto:sarthak221995@gmail.com">sarthak221995@gmail.com</a>
+        </div>
+    </header>
+
+    <h2 class="section-title">Education</h2>
+    
+    <div class="entry">
+        <div class="entry-line-1">
+            <span class="company">BITS Pilani</span>
+            <span class="location">WILP</span>
+        </div>
+        <div class="entry-line-2">
+            <span class="role">M.Tech, Data Science & Engineering</span>
+            <span class="date">2020 – 2022</span>
+        </div>
+    </div>
+    
+    <div class="entry">
+        <div class="entry-line-1">
+            <span class="company">Punjabi University</span>
+            <span class="location">Patiala</span>
+        </div>
+        <div class="entry-line-2">
+            <span class="role">B.Tech, Computer Science & Engineering</span>
+            <span class="date">2013 – 2017</span>
+        </div>
+    </div>
+
+    <h2 class="section-title">Professional Experience</h2>
+
+    <div class="entry">
+        <div class="entry-line-1">
+            <span class="company">PayPal</span>
+            <span class="location">Bengaluru, India</span>
+        </div>
+        <div class="entry-line-2">
+            <span class="role">Senior Machine Learning Engineer</span>
+            <span class="date">Apr 2025 – Present</span>
+        </div>
+        <ul>
+            <li>Built enterprise knowledge retrieval system using RAG over Confluence and Slack with hybrid search (BM25 and semantic search) using Milvus and MS-MARCO reranking.</li>
+            <li>Designed custom bidirectional chunking with OCR, parallel pipelines, source-attribution, and GPT-4 models.</li>
+            <li>Developed agentic multimodal dispute-resolution workflow using CrewAI with async tool orchestration and Redis-backed state tracking.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="entry-line-1">
+            <span class="company">Amazon</span>
+            <span class="location">Bengaluru, India</span>
+        </div>
+        <div class="entry-line-2">
+            <span class="role">Research Analyst II (Data Scientist II)</span>
+            <span class="date">May 2021 – Apr 2025</span>
+        </div>
+        <ul>
+            <li>Led LLM-based summarization engine using Claude and Mistral-7B to synthesize multi-source insights for leadership reporting.</li>
+            <li>Conducted causal impact analysis using Difference-in-Differences with PSM and KNN matching; measured 1.35% uplift in GMS.</li>
+            <li>Built ANN-powered hybrid recommendation model for vendor next-category prediction; deployed via AWS Step Functions.</li>
+        </ul>
+    </div>
+
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="entry">
+        <div class="entry-line-1">
+            <span class="company">PayPal 2025 Hackathon Finalist</span>
+            <span class="location"></span>
+        </div>
+        <ul>
+            <li>Fine-tuned Qwen-32B with SFT + multi-step GRPO (DeepSpeed ZeRO-3). Achieved 2.5× task completion improvement.</li>
+        </ul>
+    </div>
+
+    <h2 class="section-title">Skills & Interests</h2>
+    <div class="skills-section">
+        <p><span class="skill-bold">Core Expertise:</span> GenAI, Agentic AI, RAG, Fine-tuning, NLP, Deep Learning</p>
+        <p><span class="skill-bold">Programming:</span> Python, SQL, PyTorch, TensorFlow, LangChain</p>
+        <p><span class="skill-bold">Tools & Cloud:</span> AWS (Lambda, Step Functions), Docker, Milvus, Redis, Git</p>
+    </div>
+
+</div>
+</body>
+</html>
