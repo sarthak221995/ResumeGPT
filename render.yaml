@@ -7,7 +7,7 @@ services:
     rootDir: backend
     envVars:
       - key: PORT
-        value: 10000
+        value: 8000
       - key: OPENAI_API_KEY
         sync: false
       - key: CLERK_JWKS_URL
