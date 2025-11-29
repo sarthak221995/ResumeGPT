@@ -43,10 +43,7 @@ buildNumber.properties
 # Negate a specific file that would otherwise be ignored
 !important.log
 
-#Configuration Files
-src/config.py
-backend/src/config.py
-backend/src/config.py
+
 
 #Uploads
 backend/uploads/
