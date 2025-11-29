@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: resumegpt-backend
+    env: docker
+    region: oregon
+    plan: starter
+    rootDir: backend
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: AZURE_OPENAI_API_KEY
+        sync: false
+      - key: AZURE_OPENAI_ENDPOINT
+        sync: false
+      - key: AZURE_OPENAI_API_VERSION
+        sync: false
+      - key: AZURE_OPENAI_DEPLOYMENT_NAME
+        sync: false
