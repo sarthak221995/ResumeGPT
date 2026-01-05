@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 
 from fastapi import UploadFile
-from openai import AsyncOpenAI
+from openai import AsyncAzureOpenAI
 
 from ..config import settings
 
@@ -18,8 +18,13 @@ class UnifiedResumeProcessor:
     Replaces Vision/Image logic with File ID logic.
     """
     def __init__(self):
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
-        self.model = "gpt-4o-mini" 
+        self.client = AsyncAzureOpenAI(
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
+        )
+        self.model = settings.DEPLOYMENT_GPT_4O_MINI
+        logger.info(f"UnifiedResumeProcessor initialized. Using API: {self.client.base_url}") 
 
     async def process(self, file: UploadFile, template_id: str, templates_dir: Path) -> dict:
         try:

@@ -1,7 +1,7 @@
 import re
 import logging
 import html
-from openai import AsyncOpenAI  # Changed import
+from openai import AsyncAzureOpenAI  # Changed import
 from ..config import settings
 
 logger = logging.getLogger(__name__)
@@ -15,15 +15,18 @@ class HtmlResumeConverter:
     """
 
     def __init__(self):
-        logger.info("Initializing HtmlResumeConverter with OpenAI Direct API...")
+        logger.info("Initializing HtmlResumeConverter with Azure OpenAI...")
         
         # Initialize the Async Client
-        self.client = AsyncOpenAI(
-            api_key=settings.OPENAI_API_KEY
+        self.client = AsyncAzureOpenAI(
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
         )
+        logger.info(f"HtmlResumeConverter initialized. Using API: {self.client.base_url}")
         
         # Define the model (You can change this to "gpt-4-turbo" or "gpt-3.5-turbo" if needed)
-        self.model_name = "gpt-4.1"
+        self.model_name = settings.DEPLOYMENT_GPT_4_1
 
         # Store System prompt as a class attribute to be used in the API call
         self.system_prompt = """

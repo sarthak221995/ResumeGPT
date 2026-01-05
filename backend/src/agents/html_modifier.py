@@ -1,4 +1,4 @@
-from openai import AsyncOpenAI
+from openai import AsyncAzureOpenAI
 from ..config import settings
 import re
 import logging
@@ -10,15 +10,18 @@ logger = logging.getLogger(__name__)
 
 class HtmlModifier:
     def __init__(self):
-        logger.info("Initializing HtmlModifier with OpenAI Direct API...")
+        logger.info("Initializing HtmlModifier with Azure OpenAI...")
         
-        self.client = AsyncOpenAI(
-            api_key=settings.OPENAI_API_KEY
+        self.client = AsyncAzureOpenAI(
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
         )
+        logger.info(f"HtmlModifier initialized. Using API: {self.client.base_url}")
         
         # GPT-4o is recommended for large HTML manipulation tasks
         # self.model_name = "gpt-3.5-turbo"
-        self.model_name = "gpt-4.1"
+        self.model_name = settings.DEPLOYMENT_GPT_4_1
 
         # System prompt stored as class attribute
         self.system_prompt = """

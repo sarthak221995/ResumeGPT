@@ -1,6 +1,6 @@
 import time
 import logging
-from openai import AsyncOpenAI
+from openai import AsyncAzureOpenAI
 from ..config import settings  # your config file
 
 logger = logging.getLogger(__name__)
@@ -14,8 +14,13 @@ class DocumentExtractor:
     """
 
     def __init__(self):
-        self.client = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
-        self.model = "gpt-4o"  # must be gpt-4o or gpt-4.1 for direct file ingestion
+        self.client = AsyncAzureOpenAI(
+            api_key=settings.AZURE_OPENAI_API_KEY,
+            azure_endpoint=settings.AZURE_OPENAI_ENDPOINT,
+            api_version=settings.AZURE_OPENAI_API_VERSION,
+        )
+        self.model = settings.DEPLOYMENT_GPT_4O
+        logger.info(f"DocumentExtractor initialized. Using API: {self.client.base_url}")
 
     # ------------------------------------------------------------------
     # MAIN: Extract from in-memory file bytes
