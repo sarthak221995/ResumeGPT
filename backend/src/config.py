@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     # AZURE OPENAI SETTINGS
     AZURE_OPENAI_API_KEY: str
     AZURE_OPENAI_ENDPOINT: str
-    AZURE_OPENAI_API_VERSION: str = "2025-01-01-preview"
+    AZURE_OPENAI_API_VERSION: str = "2025-03-01-preview"
     
     # Deployments
     DEPLOYMENT_GPT_4O: str = "gpt-4o"
