@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react';
+// import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from './MockClerk';
 
 // --- Import Your Components ---
 import LandingPage from './LandingPage';
